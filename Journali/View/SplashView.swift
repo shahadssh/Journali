@@ -1,8 +1,22 @@
-//
-//  SplashView.swift
-//  Journali
-//
-//  Created by Shahad S on 09/11/2026.
-//
+import SwiftUI
 
-import Foundation
+struct SplashView: View {
+    var body: some View {
+        ZStack {
+            LinearGradient(colors: [.black, Color(red: 0.2, green: 0.15, blue: 0.4)],
+                           startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+            VStack(spacing: 8) {
+                Image(systemName: "book.closed.fill")
+                    .font(.system(size: 70))
+                    .foregroundStyle(.orange)
+                Text("Journali")
+                    .font(.title.bold())
+                    .foregroundStyle(.white)
+                Text("Your thoughts, your story")
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+            }
+        }
+    }
+}
