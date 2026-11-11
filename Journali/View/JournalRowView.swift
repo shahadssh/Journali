@@ -30,3 +30,14 @@ struct JournalRowView: View {
         .background(Color.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 16))
     }
 }
+#Preview {
+    JournalRowView(
+        entry: JournalEntry(title: "My Birthday",
+                            content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+                            date: Date(),
+                            isBookmarked: true),
+        onBookmark: { }
+    )
+    .padding()
+    .preferredColorScheme(.dark)
+}

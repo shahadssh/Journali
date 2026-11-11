@@ -67,3 +67,6 @@ struct EditJournalView: View {
         }
     }
 }
+#Preview {
+    EditJournalView { _ in }
+}

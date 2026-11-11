@@ -2,21 +2,31 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
+       
         ZStack {
-            LinearGradient(colors: [.black, Color(red: 0.2, green: 0.15, blue: 0.4)],
-                           startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-            VStack(spacing: 8) {
-                Image(systemName: "book.closed.fill")
-                    .font(.system(size: 70))
-                    .foregroundStyle(.orange)
+            Color("MainScreenBackgroundColor")
+            .ignoresSafeArea()
+          
+            VStack(spacing: 0) {
+                Image("AppIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:81.46,height: 106)
+                    
                 Text("Journali")
-                    .font(.title.bold())
-                    .foregroundStyle(.white)
+                    .font(.system(size : 42 , weight:.bold ))
+                    .foregroundStyle(Color("MainHeadings&JournalContentColor"))
+                    .padding(.top,21)
+                
                 Text("Your thoughts, your story")
-                    .font(.caption)
-                    .foregroundStyle(.gray)
+                    .font(.system(size:18, weight:.light ))
+                    .foregroundStyle(Color("MainHeadings&JournalContentColor"))
+                    .padding(.top,8)
             }
         }
     }
+    
+}
+#Preview {
+    SplashView()
 }
