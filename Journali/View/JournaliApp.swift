@@ -11,7 +11,7 @@ struct JournaliApp: App {
                     SplashView()
                         .transition(.opacity)
                 } else {
-                    JournalListView()
+                    MainPageView()
                 }
             }
             .task {
