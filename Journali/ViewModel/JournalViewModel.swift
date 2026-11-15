@@ -8,15 +8,29 @@ enum SortOption {
 
 @Observable
 class JournalViewModel {
-    var entries: [JournalEntry] = []
+    var entries: [JournalEntry] = [] {
+        didSet { save() }
+    }
     var searchText = ""
     var sortOption: SortOption = .entryDate
-
-    // اليومية اللي المستخدم سحبها للحذف وتنتظر تأكيد (Delete Alert)
+    var showBookmarkedOnly = false
     var entryToDelete: JournalEntry?
+
+    
+    @ObservationIgnored
+    private let saveURL = URL.documentsDirectory.appending(path: "journals.json")
+
+    init() {
+        load()
+    }
 
     var displayedEntries: [JournalEntry] {
         var result = entries
+
+        // فلتر الـ bookmark
+        if showBookmarkedOnly {
+            result = result.filter { $0.isBookmarked }
+        }
 
         if !searchText.isEmpty {
             result = result.filter {
@@ -25,18 +39,9 @@ class JournalViewModel {
             }
         }
 
-        switch sortOption {
-        case .entryDate:
-            result.sort { $0.date > $1.date }
-        case .bookmark:
-            result.sort {
-                if $0.isBookmarked != $1.isBookmarked { return $0.isBookmarked }
-                return $0.date > $1.date
-            }
-        }
+        result.sort { $0.date > $1.date }   // الترتيب دايمًا حسب التاريخ
         return result
     }
-
     func saveEntry(_ entry: JournalEntry) {
         if let index = entries.firstIndex(where: { $0.id == entry.id }) {
             entries[index] = entry
@@ -54,5 +59,18 @@ class JournalViewModel {
     func toggleBookmark(_ entry: JournalEntry) {
         guard let index = entries.firstIndex(where: { $0.id == entry.id }) else { return }
         entries[index].isBookmarked.toggle()
+    }
+
+    private func save() {
+        if let data = try? JSONEncoder().encode(entries) {
+            try? data.write(to: saveURL, options: .atomic)
+        }
+    }
+
+    private func load() {
+        guard let data = try? Data(contentsOf: saveURL),
+              let decoded = try? JSONDecoder().decode([JournalEntry].self, from: data)
+        else { return }
+        entries = decoded
     }
 }

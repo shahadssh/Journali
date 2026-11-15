@@ -8,7 +8,7 @@ struct SplashView: View {
             .ignoresSafeArea()
           
             VStack(spacing: 0) {
-                Image("AppIcon")
+                Image("AppIconSplashScreen")
                     .resizable()
                     .scaledToFit()
                     .frame(width:81.46,height: 106)

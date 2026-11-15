@@ -27,7 +27,6 @@ struct EditJournalView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            // الأزرار العلوية
             HStack {
                 Button {
                     if hasChanges { showDiscardAlert = true } else { dismiss() }
@@ -58,7 +57,6 @@ struct EditJournalView: View {
                 .opacity(title.isEmpty ? 0.5 : 1)
             }
 
-            // العنوان
             TextField("", text: $title,
                       prompt: Text("Title").foregroundStyle(.gray))
                 .font(.system(size: 34, weight: .bold))
@@ -66,13 +64,11 @@ struct EditJournalView: View {
                 .focused($focusedField, equals: .title)
                 .padding(.top, 20)
 
-            // التاريخ
             Text(original.date.formatted(.dateTime.day(.twoDigits).month(.twoDigits).year()))
                 .font(.system(size: 14))
                 .foregroundStyle(Color("Entry dates Color"))
                 .padding(.top, 8)
 
-            // النص
             TextEditor(text: $content)
                 .scrollContentBackground(.hidden)
                 .font(.system(size: 20))

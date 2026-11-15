@@ -9,8 +9,8 @@ struct MainPageView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color("MainScreenBackgroundColor")
-                    .ignoresSafeArea()
+//                Color("MainScreenBackgroundColor")
+//                    .ignoresSafeArea()
 
                 VStack(spacing: 0) {
                     HeaderView(viewModel: viewModel) {
@@ -21,31 +21,35 @@ struct MainPageView: View {
                     if viewModel.entries.isEmpty {
                         EmptyStateView()
                     } else {
-                        List {
+                         List {
                             ForEach(viewModel.displayedEntries) { entry in
-                                JournalRowView(entry: entry) {
-                                    viewModel.toggleBookmark(entry)
-                                }
-                                .contentShape(Rectangle())   // NEW: يخلي الضغط يشتغل على البطاقة كلها
-                                .onTapGesture {              // NEW: الضغط على البطاقة
+                                Button {
                                     selectedEntry = entry
                                     showEditor = true
+                                } label: {
+                                    JournalRowView(entry: entry) {
+                                        viewModel.toggleBookmark(entry)
+                                    }
                                 }
+                                .buttonStyle(.plain)
                                 .listRowBackground(Color.clear)
                                 .listRowSeparator(.hidden)
-                                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                                     Button {
                                         viewModel.entryToDelete = entry
                                     } label: {
-                                        Image(systemName: "trash.fill")   // NEW
+                                        Image(systemName: "trash.fill")
                                     }
-                                    .tint(Color("Delete action Color"))   // NEW
+                                    .tint(Color("Delete action Color"))
                                 }
                             }
                         }
                         .listStyle(.plain)
                         .scrollContentBackground(.hidden)
-                        .contentMargins(.bottom, 80, for: .scrollContent)   // NEW: عشان البطاقة الأخيرة ما يغطيها البحث
+                        .contentMargins(.bottom, 80, for: .scrollContent)
+                        .listStyle(.plain)
+                        .scrollContentBackground(.hidden)
+                        .contentMargins(.bottom, 80, for: .scrollContent)
                     }
                 }
 

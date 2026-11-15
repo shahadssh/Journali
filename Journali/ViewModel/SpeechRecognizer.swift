@@ -1,4 +1,4 @@
-import Foundation
+/* import Foundation
 import Speech
 import AVFoundation
 import Observation
@@ -70,3 +70,4 @@ class SpeechRecognizer {
     }
 }
 
+*/
