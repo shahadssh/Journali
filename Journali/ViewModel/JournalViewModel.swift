@@ -41,7 +41,7 @@ class JournalViewModel {
             }
         }
 
-        result.sort { $0.date < $1.date }   // الترتيب دايمًا حسب التاريخ
+        result.sort { $0.date > $1.date }   // الترتيب دايمًا حسب التاريخ
         return result
     }
     func saveEntry(_ entry: JournalEntry) {
