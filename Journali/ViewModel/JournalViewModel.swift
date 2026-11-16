@@ -2,9 +2,11 @@ import Foundation
 import Observation
 
 enum SortOption {
-    case entryDate
-    case bookmark
+    case added        // الافتراضي: آخر ما أضفتيه فوق
+    case entryDate    // حسب تاريخ اليومية
+    case bookmark     // المحفوظة فقط
 }
+var sortOption: SortOption = .added
 
 @Observable
 class JournalViewModel {
@@ -39,7 +41,7 @@ class JournalViewModel {
             }
         }
 
-        result.sort { $0.date > $1.date }   // الترتيب دايمًا حسب التاريخ
+        result.sort { $0.date < $1.date }   // الترتيب دايمًا حسب التاريخ
         return result
     }
     func saveEntry(_ entry: JournalEntry) {

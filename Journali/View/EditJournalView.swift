@@ -90,14 +90,50 @@ struct EditJournalView: View {
         .padding(.top, 20)
         .background(Color("Journal cards Color").ignoresSafeArea())
         .presentationDragIndicator(.visible)
+        .interactiveDismissDisabled(hasChanges)
         .preferredColorScheme(.dark)
         .onAppear { focusedField = .title }
-        .confirmationDialog("Are you sure you want to discard changes on this journal?",
-                            isPresented: $showDiscardAlert,
-                            titleVisibility: .visible) {
-            Button("Discard Changes", role: .destructive) { dismiss() }
-            Button("Keep Editing", role: .cancel) { }
+        // نافذة التنبيه المرسومة (مثل التصميم)
+        .overlay(alignment: .top) {
+            if showDiscardAlert {
+                VStack(spacing: 10) {
+                    Text("Are you sure you want to discard changes on this journal?")
+                        .font(.system(size: 15))
+                        .foregroundStyle(.white.opacity(0.9))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 6)
+                        .padding(.bottom, 4)
+
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Discard Changes")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundStyle(Color("Delete action Color"))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 52)
+                            .glassEffect(.clear, in: Capsule())
+                    }
+
+                    Button {
+                        showDiscardAlert = false
+                    } label: {
+                        Text("Keep Editing")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 52)
+                            .glassEffect(.clear, in: Capsule())
+                    }
+                }
+                .padding(16)
+                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 32))
+                .padding(.horizontal, 16)
+                .padding(.top, 8)
+                .transition(.move(edge: .top).combined(with: .opacity))
+            }
         }
+        .animation(.easeInOut(duration: 0.25), value: showDiscardAlert)
     }
 }
 
