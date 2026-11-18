@@ -11,7 +11,7 @@ With Journali, you can:
 - Edit or delete your journals (swipe to delete, with a confirmation).
 - Bookmark your favorite journals.
 - Search your journals.
-- Sort your journals by entry date or show only bookmarked ones.
+- Sort your journals by entry date or by bookmark.
 - Come back anytime: your journals are saved on your device.
 
 ## Screenshots
