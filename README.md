@@ -18,11 +18,11 @@ With Journali, you can:
 
 | Splash | Empty State | Main Page |
 |:---:|:---:|:---:|
-| <img src="Screenshots/splash.png" width="220"> | <img src="Screenshots/empty_state.png" width="220"> | <img src="Screenshots/main_page.png" width="220"> |
+| <img src="Screenshots/splash.png" width="220"> | <img src="Screenshots/emptyState.png" width="220"> | <img src="Screenshots/mainPage.png" width="220"> |
 
 | Search | Delete Alert | Discard Alert |
 |:---:|:---:|:---:|
-| <img src="Screenshots/searchbar.png" width="220"> | <img src="Screenshots/delete_alert.png" width="220"> | <img src="Screenshots/discard_alert.png" width="220"> |
+| <img src="Screenshots/searchbar.png" width="220"> | <img src="Screenshots/deleteAlert.png" width="220"> | <img src="Screenshots/discardAlert.png" width="220"> |
 
 ## Technologies Used
 
