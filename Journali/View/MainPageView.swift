@@ -9,7 +9,6 @@ struct MainPageView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 VStack(spacing: 0) {
                     HeaderView(viewModel: viewModel) {
                         selectedEntry = nil
@@ -45,7 +44,6 @@ struct MainPageView: View {
                         .listStyle(.plain)
                         .scrollContentBackground(.hidden)
                         .contentMargins(.bottom, 80, for: .scrollContent)
-
                     }
                 }
                 
@@ -113,7 +111,7 @@ struct MainPageView: View {
         }
     }
 }
-    #Preview{
-        MainPageView()
-    }
 
+#Preview {
+    MainPageView()
+}

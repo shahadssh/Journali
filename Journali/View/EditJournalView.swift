@@ -25,6 +25,11 @@ struct EditJournalView: View {
         title != original.title || content != original.content
     }
 
+    private var canSave: Bool {
+        !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        !content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -53,8 +58,8 @@ struct EditJournalView: View {
                         .frame(width: 48, height: 48)
                         .background(Color("Save button, active actions Color"), in: Circle())
                 }
-                .disabled(title.isEmpty)
-                .opacity(title.isEmpty ? 0.5 : 1)
+                .disabled(!canSave)
+                .opacity(canSave ? 1 : 0.5)
             }
 
             TextField("", text: $title,
