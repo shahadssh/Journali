@@ -14,6 +14,7 @@ struct JournaliApp: App {
                     MainPageView()
                 }
             }
+            .preferredColorScheme(.dark)
             .task {
                 try? await Task.sleep(for: .seconds(2))
                 withAnimation { showSplash = false }

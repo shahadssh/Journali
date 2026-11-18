@@ -11,8 +11,6 @@ struct SearchBarView: View {
             TextField("Search", text: $viewModel.searchText)
                 .foregroundStyle(.white)
 
-            Image(systemName: "mic")
-                .foregroundStyle(.white)
         }
         .padding(.horizontal, 16)
         .frame(height: 50)

@@ -16,7 +16,6 @@ struct EmptyStateView: View {
             Text("Craft your personal diary, tap the plus icon to begin")
                 .font(.system(size: 18, weight: .light))
                 .multilineTextAlignment(.center)
-//                .foregroundStyle(Color("MainHeadings&JournalContentColor"))
                 .padding(.top, 16)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

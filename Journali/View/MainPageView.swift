@@ -9,8 +9,6 @@ struct MainPageView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                //                Color("MainScreenBackgroundColor")
-                //                    .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
                     HeaderView(viewModel: viewModel) {
@@ -47,9 +45,7 @@ struct MainPageView: View {
                         .listStyle(.plain)
                         .scrollContentBackground(.hidden)
                         .contentMargins(.bottom, 80, for: .scrollContent)
-                        .listStyle(.plain)
-                        .scrollContentBackground(.hidden)
-                        .contentMargins(.bottom, 80, for: .scrollContent)
+
                     }
                 }
                 
@@ -113,11 +109,11 @@ struct MainPageView: View {
                     }
                 }
             }
-            .animation(.easeInOut(duration: 0.2), value: viewModel.entryToDelete != nil)        .preferredColorScheme(.dark)
+            .animation(.easeInOut(duration: 0.2), value: viewModel.entryToDelete != nil)
         }
     }
 }
-    #Preview {
+    #Preview{
         MainPageView()
     }
 

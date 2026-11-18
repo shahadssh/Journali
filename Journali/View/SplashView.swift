@@ -4,9 +4,7 @@ struct SplashView: View {
     var body: some View {
        
         ZStack {
-            Color("MainScreenBackgroundColor")
-            .ignoresSafeArea()
-          
+         
             VStack(spacing: 0) {
                 Image("AppIconSplashScreen")
                     .resizable()
@@ -15,12 +13,10 @@ struct SplashView: View {
                     
                 Text("Journali")
                     .font(.system(size : 42 , weight:.bold ))
-                    .foregroundStyle(Color("MainHeadings&JournalContentColor"))
                     .padding(.top,21)
                 
                 Text("Your thoughts, your story")
                     .font(.system(size:18, weight:.light ))
-                    .foregroundStyle(Color("MainHeadings&JournalContentColor"))
                     .padding(.top,8)
             }
         }

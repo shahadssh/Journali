@@ -91,9 +91,7 @@ struct EditJournalView: View {
         .background(Color("Journal cards Color").ignoresSafeArea())
         .presentationDragIndicator(.visible)
         .interactiveDismissDisabled(hasChanges)
-        .preferredColorScheme(.dark)
         .onAppear { focusedField = .title }
-        // نافذة التنبيه المرسومة (مثل التصميم)
         .overlay(alignment: .top) {
             if showDiscardAlert {
                 VStack(spacing: 10) {
